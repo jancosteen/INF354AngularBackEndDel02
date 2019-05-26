@@ -1,0 +1,58 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" (click)="causesDetails()"
+      ><mat-icon>info</mat-icon></a
+    >
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="causesForm" (ngSubmit)="onFormSubmit(causesForm.value)">
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Cause ID"
+          formControlName="cause_id"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !causesForm.get('cause_id').valid &&
+              causesForm.get('cause_id').touched
+            "
+            >Please enter a Numerical Cause ID</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          placeholder="Cause Description"
+          formControlName="cause_desc"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !causesForm.get('cause_desc').valid &&
+              causesForm.get('cause_desc').touched
+            "
+            >Please enter a Valid Cause Description</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button
+          type="submit"
+          [disabled]="!causesForm.valid"
+          mat-flat-button
+          color="primary"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

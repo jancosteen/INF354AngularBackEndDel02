@@ -1,0 +1,37 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/malaria-type']"
+      ><mat-icon>list</mat-icon></a
+    >
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title
+        ><h2>{{ type.id }}</h2></mat-card-title
+      >
+      <mat-card-subtitle>{{ type.malType_desc }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Malaria Type ID:</dt>
+        <dd>{{ type.id }}</dd>
+        <dt>Description:</dt>
+        <dd>{{ type.malType_desc }}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a
+        mat-flat-button
+        color="primary"
+        [routerLink]="['/malaria-type-edit', type._id]"
+        ><mat-icon>edit</mat-icon></a
+      >
+      <a mat-flat-button color="warn" (click)="deleteMalT(type._id)"
+        ><mat-icon>delete</mat-icon></a
+      >
+    </mat-card-actions>
+  </mat-card>
+</div>
